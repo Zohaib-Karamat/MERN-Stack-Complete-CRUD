@@ -4,3 +4,20 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 
 const app = express();
+app.use(bodyParser.json());
+dotenv.config();
+
+const PORT = process.env.PORT || 7000;
+const MONGO_URL = process.env.MONGO_URL
+
+moongose 
+       .connect(MONGO_URL)
+       .then(()=>{
+        console.log("DB connected successfuly");
+        app.listen(PORT,()=>{
+            console.log(`Surver is running on port ${PORT}`);
+        })
+       })
+       .catch((error)=>{
+        console.log(error);
+       })
