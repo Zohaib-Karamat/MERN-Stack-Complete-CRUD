@@ -1,11 +1,11 @@
-import './App.css'
+import User from './getUsers/User'
 
 function App() {
 
   return (
-    <>
-    <h1>This is a MERN Stack CRUD Application</h1>
-    </>
+    <div className="container">
+      <User />
+    </div>
   )
 }
 
