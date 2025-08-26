@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./AddUser.css";
 import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
+import {toast}  from "react-hot-toast";
 
 const AddUser = () => {
   const users={
@@ -22,7 +23,7 @@ const AddUser = () => {
       e.preventDefault();
       await axios.post("http://localhost:8000/api/user", user)
       .then((response)=>{
-        console.log("User created sucessfully ", response);
+        toast.success(response.data.message,{position:"top-right"});
         navigate("/");
       })
       .catch((error)=>{
