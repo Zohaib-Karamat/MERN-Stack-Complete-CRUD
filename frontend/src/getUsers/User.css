@@ -21,5 +21,13 @@ body{
     /* background-color: darkcyan; */
     text-align: center;
     padding: 10px;
+    vertical-align: middle;
     /* color: white; */
+}
+
+.actions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
