@@ -1,48 +1,56 @@
-import React from "react";
-import useState from "useState";
+import React, { useEffect, useState } from "react";
 import "./User.css";
+import axios from "axios";
 
 const User = () => {
-  const [User, setUser] = useState([]);
-  
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("http://localhost:8000/api/get/users");
+      setUsers(response.data);
+    };
+    fetchData();
+  }, [])
+
+
   return (
     <div className="userTable mt-3">
       <button type="button" class="btn btn-primary">
         Add User
         <span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          color="#fbfafa"
-          fill="none"
-        >
-          <path
-            d="M12 7.5C12 9.433 10.433 11 8.5 11C6.567 11 5 9.433 5 7.5C5 5.567 6.567 4 8.5 4C10.433 4 12 5.567 12 7.5Z"
-            stroke="#fbfafa"
-            stroke-width="2"
-          ></path>
-          <path
-            d="M13.5 11C15.433 11 17 9.433 17 7.5C17 5.567 15.433 4 13.5 4"
-            stroke="#fbfafa"
-            stroke-width="2"
-            stroke-linecap="round"
-          ></path>
-          <path
-            d="M13.1429 20H3.85714C2.83147 20 2 19.2325 2 18.2857C2 15.9188 4.07868 14 6.64286 14H10.3571C11.4023 14 12.3669 14.3188 13.1429 14.8568"
-            stroke="#fbfafa"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-          <path
-            d="M19 14V20M22 17L16 17"
-            stroke="#fbfafa"
-            stroke-width="2"
-            stroke-linecap="round"
-          ></path>
-        </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            color="#fbfafa"
+            fill="none"
+          >
+            <path
+              d="M12 7.5C12 9.433 10.433 11 8.5 11C6.567 11 5 9.433 5 7.5C5 5.567 6.567 4 8.5 4C10.433 4 12 5.567 12 7.5Z"
+              stroke="#fbfafa"
+              stroke-width="2"
+            ></path>
+            <path
+              d="M13.5 11C15.433 11 17 9.433 17 7.5C17 5.567 15.433 4 13.5 4"
+              stroke="#fbfafa"
+              stroke-width="2"
+              stroke-linecap="round"
+            ></path>
+            <path
+              d="M13.1429 20H3.85714C2.83147 20 2 19.2325 2 18.2857C2 15.9188 4.07868 14 6.64286 14H10.3571C11.4023 14 12.3669 14.3188 13.1429 14.8568"
+              stroke="#fbfafa"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+            <path
+              d="M19 14V20M22 17L16 17"
+              stroke="#fbfafa"
+              stroke-width="2"
+              stroke-linecap="round"
+            ></path>
+          </svg>
         </span>
       </button>
       <table className="table table-bordered">
@@ -57,11 +65,14 @@ const User = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Ali</td>
-            <td>ali@gmail.com</td>
-            <td>Canada</td>
+          {
+            users.map((user, index) => {
+              return (
+                <tr>
+            <td>{index+1}</td>
+            <td>{user.name}</td>
+            <td>{user.email}</td>
+            <td>{user.address}</td>
             <td className="actions">
               <button type="button" class="btn btn-warning">
                 <svg
@@ -125,9 +136,13 @@ const User = () => {
               </button>
             </td>
           </tr>
-        </tbody>
-      </table>
-    </div>
+              )
+          })
+          }
+        
+      </tbody>
+    </table>
+    </div >
   );
 };
 
