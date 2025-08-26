@@ -1,12 +1,24 @@
-import User from './getUsers/User'
+// import { AddUser } from './components/addUser/AddUser';
+import AddUser from "./components/addUser/AddUser";
+import User from "./components/getUsers/User";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
-
+  const route = createBrowserRouter([
+    {
+      path: "/",
+      element: <User />,
+    },
+    {
+      path: "/add",
+      element: <AddUser />
+    }
+  ]);
   return (
     <div className="container">
-      <User />
+      <RouterProvider router={route}></RouterProvider>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
