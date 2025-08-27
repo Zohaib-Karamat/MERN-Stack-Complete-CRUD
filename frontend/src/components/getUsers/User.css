@@ -31,3 +31,7 @@ body{
     justify-content: center;
     gap: 5px;
 }
+.noData{
+    margin-top: 20px;
+    text-align: center;
+}
