@@ -14,7 +14,9 @@ const User = () => {
     fetchData();
   }, [])
 
-
+  const deleteUser = async (userId) => {
+    
+  }
   return (
     <div className="userTable mt-3">
       
@@ -77,7 +79,8 @@ const User = () => {
             <td>{user.email}</td>
             <td>{user.address}</td>
             <td className="actions">
-              <button type="button" class="btn btn-warning">
+              
+              <Link to={`/update/`+user._id} type="button" class="btn btn-warning">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -100,7 +103,7 @@ const User = () => {
                     stroke-linejoin="round"
                   ></path>
                 </svg>
-              </button>
+              </Link>
 
               <button type="button" class="btn btn-danger">
                 <svg
