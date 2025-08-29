@@ -3,6 +3,7 @@ import "./UpdateUser.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { API_BASE_URL } from "../../config/api";
 
 const UpdateUser = () => {
   const initialUser = {
@@ -80,7 +81,6 @@ const UpdateUser = () => {
         newErrors[field] = error;
       }
     });
-    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -89,7 +89,7 @@ const UpdateUser = () => {
     const fetchUser = async () => {
       try {
         setIsLoadingData(true);
-        const response = await axios.get(`http://localhost:8000/api/get/user/${id}`);
+        const response = await axios.get(`${API_BASE_URL}/api/get/user/${id}`);
         setUser(response.data);
       } catch (error) {
         console.error("Error fetching user:", error);
@@ -120,7 +120,7 @@ const UpdateUser = () => {
     setIsLoading(true);
     
     try {
-      const response = await axios.put(`http://localhost:8000/api/update/user/${id}`, {
+      const response = await axios.put(`${API_BASE_URL}/api/update/user/${id}`, {
         name: user.name.trim(),
         email: user.email.trim().toLowerCase(),
         address: user.address.trim()

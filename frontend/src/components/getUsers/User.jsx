@@ -3,6 +3,8 @@ import "./User.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { API_BASE_URL } from "../../config/api";
+
 
 const User = () => {
   const [users, setUsers] = useState([]);
@@ -15,7 +17,7 @@ const User = () => {
       try {
         setIsLoading(true);
         setError(null);
-        const response = await axios.get("http://localhost:8000/api/get/users");
+        const response = await axios.get(`${API_BASE_URL}/api/get/users`);
         setUsers(response.data);
       } catch (err) {
         console.error("Error fetching users:", err);
@@ -45,7 +47,7 @@ const User = () => {
     
     try {
       setDeletingUserId(userId);
-      const response = await axios.delete(`http://localhost:8000/api/delete/user/${userId}`);
+      const response = await axios.delete(`${API_BASE_URL}/api/delete/user/${userId}`);
       console.log(response.data);
       setUsers((prevUsers) =>
         prevUsers.filter((user) => user._id !== userId)

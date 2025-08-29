@@ -3,6 +3,7 @@ import "./AddUser.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { API_BASE_URL } from "../../config/api";
 
 const AddUser = () => {
   const initialUser = {
@@ -94,7 +95,7 @@ const AddUser = () => {
     setIsLoading(true);
     
     try {
-      const response = await axios.post("http://localhost:8000/api/user", {
+      const response = await axios.post(`${API_BASE_URL}/api/user`, {
         name: user.name.trim(),
         email: user.email.trim().toLowerCase(),
         address: user.address.trim()
