@@ -1,6 +1,6 @@
-# 🚀 MERN Stack Complete CRUD Application
+# 🚀 UserHub - Complete User Management System
 
-A full-stack User Management System built with MongoDB, Express.js, React.js, and Node.js. This application provides a complete CRUD (Create, Read, Update, Delete) functionality for managing user data with a modern, responsive user interface.
+*A full-stack MERN application for comprehensive user data management with modern CRUD operations.*
 
 ## 🌟 Features
 
