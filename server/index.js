@@ -26,3 +26,6 @@ moongose
        })
 
 app.use("/api", route);
+app.get("/", (req, res) => {
+    res.send("Welcome to User Management System");
+})
