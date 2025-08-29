@@ -23,7 +23,6 @@ A full-stack User Management System built with MongoDB, Express.js, React.js, an
 - **React Hot Toast** - Beautiful toast notifications
 - **Bootstrap 5.3** - CSS framework for responsive design
 - **Font Awesome** - Icon library
-- **Sass** - CSS preprocessor
 
 ### Backend
 - **Node.js** - JavaScript runtime
@@ -92,8 +91,6 @@ Before running this application, make sure you have the following installed:
    ```env
    PORT=8000
    MONGO_URL=mongodb://localhost:27017/mern_crud
-   # Or for MongoDB Atlas:
-   # MONGO_URL=mongodb+srv://username:password@cluster.mongodb.net/mern_crud
    ```
 
 4. **Set up the Frontend**
